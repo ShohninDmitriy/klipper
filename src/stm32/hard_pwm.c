@@ -63,8 +63,8 @@ static const struct gpio_pwm_info pwm_regs[] = {
     {TIM4,  GPIO('D', 12),  1, GPIO_FUNCTION(2)}, //   FAN2             Tested - Working
 //    {TIM4,  GPIO('B',  7),  2, GPIO_FUNCTION(2)}, // END_BL_TOUCH
     {TIM4,  GPIO('D', 13),  2, GPIO_FUNCTION(2)}, //   FAN3             Tested - Working
-//    {TIM4,  GPIO('D', 14),  3, GPIO_FUNCTION(2)}, // FAN4             Tested - Not Working crash mcu
-//    {TIM4,  GPIO('D', 15),  4, GPIO_FUNCTION(2)}, // FAN5             Tested - Not Working crash mcu
+//    {TIM4,  GPIO('D', 14),  3, GPIO_FUNCTION(2)}, // FAN4             Tested - Not Working crash mcu PWM already programmed at different speed
+//    {TIM4,  GPIO('D', 15),  4, GPIO_FUNCTION(2)}, // FAN5             Tested - Not Working crash mcu PWM already programmed at different speed
 //    {TIM5,  GPIO('A',  0),  1, GPIO_FUNCTION(2)}, // EN_DRIVER3
     {TIM5,  GPIO('A',  1),  2, GPIO_FUNCTION(2)}, //   HBED             Tested - Working
     {TIM5,  GPIO('A',  2),  3, GPIO_FUNCTION(2)}, //   HE0              Tested - Working
