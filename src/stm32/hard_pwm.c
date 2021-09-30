@@ -73,7 +73,7 @@ static const struct gpio_pwm_info pwm_regs[] = {
 //    {TIM8,  GPIO('C',  7),  2, GPIO_FUNCTION(3)}, // cs_driver3
 //    {TIM8,  GPIO('C',  8),  3, GPIO_FUNCTION(3)}, // sdio
 //    {TIM8,  GPIO('C',  9),  4, GPIO_FUNCTION(3)}, // sdio
-    {TIM9,  GPIO('E',  5),  1, GPIO_FUNCTION(3)},, // FAN1 Tested - Working
+    {TIM9,  GPIO('E',  5),  1, GPIO_FUNCTION(3)}, // FAN1 Tested - Working
 //    {TIM9,  GPIO('E',  6),  2, GPIO_FUNCTION(3)}, // step_driver7
     {TIM10, GPIO('B',  8),  1, GPIO_FUNCTION(3)}, // I2C_SCL
 //    {TIM10, GPIO('F',  6),  1, GPIO_FUNCTION(3)}, // T2
