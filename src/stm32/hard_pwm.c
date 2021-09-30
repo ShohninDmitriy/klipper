@@ -45,52 +45,46 @@ static const struct gpio_pwm_info pwm_regs[] = {
     {TIM4, GPIO('B', 7),  2, GPIO_FUNCTION(2)},
     {TIM4, GPIO('B', 8),  3, GPIO_FUNCTION(2)},
     {TIM4, GPIO('B', 9),  4, GPIO_FUNCTION(2)}
-#elif CONFIG_MACH_STM32F446
-    {TIM1,  GPIO('A',  8),  1, GPIO_FUNCTION(1)}, // Tested - Not Working
-    {TIM1,  GPIO('E',  9),  1, GPIO_FUNCTION(1)}, // Tested - Not Working
-    {TIM1,  GPIO('A',  9),  2, GPIO_FUNCTION(1)}, // Tested - Not Working
-    {TIM1,  GPIO('E', 11),  2, GPIO_FUNCTION(1)}, // Tested - Not Working
-    {TIM1,  GPIO('A', 10),  3, GPIO_FUNCTION(1)}, // Tested - Not Working
-    {TIM1,  GPIO('E', 13),  3, GPIO_FUNCTION(1)}, // Tested - Not Working
-    {TIM1,  GPIO('A', 11),  4, GPIO_FUNCTION(1)}, // Tested - Not Working
-    {TIM1,  GPIO('E', 14),  4, GPIO_FUNCTION(1)}, // Tested - Not Working
-    {TIM2,  GPIO('A',  5),  1, GPIO_FUNCTION(1)}, // Tested - Working
-    {TIM2,  GPIO('A', 15),  1, GPIO_FUNCTION(1)}, // Tested - Working
-    {TIM2,  GPIO('B',  3),  2, GPIO_FUNCTION(1)},
-    {TIM2,  GPIO('B', 10),  3, GPIO_FUNCTION(1)},
-    {TIM2,  GPIO('B',  2),  4, GPIO_FUNCTION(1)},
-    {TIM2,  GPIO('B', 11),  4, GPIO_FUNCTION(1)},
-    {TIM3,  GPIO('B',  4),  1, GPIO_FUNCTION(2)}, // Tested - Working
-    {TIM3,  GPIO('A',  7),  2, GPIO_FUNCTION(2)},
-    {TIM3,  GPIO('B',  5),  2, GPIO_FUNCTION(2)}, // Tested - Working
-    {TIM3,  GPIO('B',  0),  3, GPIO_FUNCTION(2)},
-    {TIM3,  GPIO('B',  1),  4, GPIO_FUNCTION(2)},
-    {TIM4,  GPIO('B',  6),  1, GPIO_FUNCTION(2)},
-    {TIM4,  GPIO('D', 12),  1, GPIO_FUNCTION(2)}, // Tested - Working
-    {TIM4,  GPIO('B',  7),  2, GPIO_FUNCTION(2)},
-    {TIM4,  GPIO('D', 13),  2, GPIO_FUNCTION(2)},
-    {TIM4,  GPIO('D', 14),  3, GPIO_FUNCTION(2)},
-    {TIM4,  GPIO('D', 15),  4, GPIO_FUNCTION(2)},
-    {TIM5,  GPIO('A',  0),  1, GPIO_FUNCTION(2)},
-    {TIM5,  GPIO('A',  1),  2, GPIO_FUNCTION(2)},
-    {TIM5,  GPIO('A',  2),  3, GPIO_FUNCTION(2)},
-    {TIM5,  GPIO('A',  3),  4, GPIO_FUNCTION(2)}, // Tested - Working
-    {TIM8,  GPIO('C',  6),  1, GPIO_FUNCTION(3)},
-    {TIM8,  GPIO('C',  7),  2, GPIO_FUNCTION(3)},
-    {TIM8,  GPIO('C',  8),  3, GPIO_FUNCTION(3)},
-    {TIM8,  GPIO('C',  9),  4, GPIO_FUNCTION(3)},
-    {TIM9,  GPIO('E',  5),  1, GPIO_FUNCTION(3)},
-    {TIM9,  GPIO('E',  6),  2, GPIO_FUNCTION(3)},
-    {TIM10, GPIO('B',  8),  1, GPIO_FUNCTION(3)},
-    {TIM10, GPIO('F',  6),  1, GPIO_FUNCTION(3)},
-    {TIM11, GPIO('B',  9),  1, GPIO_FUNCTION(3)},
-    {TIM11, GPIO('F',  7),  1, GPIO_FUNCTION(3)},
-    {TIM12, GPIO('B', 14),  1, GPIO_FUNCTION(9)},
-    {TIM12, GPIO('B', 15),  2, GPIO_FUNCTION(9)},
-    {TIM13, GPIO('A',  6),  1, GPIO_FUNCTION(9)}, // Tested - Working
-    {TIM13, GPIO('F',  8),  1, GPIO_FUNCTION(9)},
-    {TIM14, GPIO('A',  7),  1, GPIO_FUNCTION(9)}, // Tested - Working
-    {TIM14, GPIO('F',  9),  1, GPIO_FUNCTION(9)}
+#elif CONFIG_MACH_STM32F446 //octopus
+//    {TIM1,  GPIO('A',  8),  1, GPIO_FUNCTION(1)}, // FAN0 Tested - Not Working
+//    {TIM1,  GPIO('E',  9),  1, GPIO_FUNCTION(1)}, // EXP1_3 Tested - Not Working
+    {TIM2,  GPIO('A',  5),  1, GPIO_FUNCTION(1)}, // EXP2_2 Tested - Working
+//    {TIM2,  GPIO('A', 15),  1, GPIO_FUNCTION(1)}, // SPI3 Tested - Working
+//    {TIM2,  GPIO('B',  3),  2, GPIO_FUNCTION(1)}, // SPI3
+    {TIM2,  GPIO('B', 10),  3, GPIO_FUNCTION(1)}, // HE2
+    {TIM2,  GPIO('B',  2),  4, GPIO_FUNCTION(1)}, // EXP2_5
+    {TIM2,  GPIO('B', 11),  4, GPIO_FUNCTION(1)}, // HE3
+//    {TIM3,  GPIO('B',  4),  1, GPIO_FUNCTION(2)}, // SPI3 Tested - Working
+//    {TIM3,  GPIO('A',  7),  2, GPIO_FUNCTION(2)}, // EXP2_6 Tested - Working ?
+//    {TIM3,  GPIO('B',  5),  2, GPIO_FUNCTION(2)}, // SPI3 Tested - Working
+    {TIM3,  GPIO('B',  0),  3, GPIO_FUNCTION(2)}, // RGB_LED
+    {TIM3,  GPIO('B',  1),  4, GPIO_FUNCTION(2)}, // EXP2_3
+    {TIM4,  GPIO('B',  6),  1, GPIO_FUNCTION(2)}, // PWM_BL_TOUCH
+    {TIM4,  GPIO('D', 12),  1, GPIO_FUNCTION(2)}, // FAN2 Tested - Working
+//    {TIM4,  GPIO('B',  7),  2, GPIO_FUNCTION(2)}, // END_BL_TOUCH
+    {TIM4,  GPIO('D', 13),  2, GPIO_FUNCTION(2)}, // FAN3
+    {TIM4,  GPIO('D', 14),  3, GPIO_FUNCTION(2)}, // FAN4
+    {TIM4,  GPIO('D', 15),  4, GPIO_FUNCTION(2)}, // FAN5
+//    {TIM5,  GPIO('A',  0),  1, GPIO_FUNCTION(2)}, // en_driver3
+    {TIM5,  GPIO('A',  1),  2, GPIO_FUNCTION(2)}, // HBED
+    {TIM5,  GPIO('A',  2),  3, GPIO_FUNCTION(2)}, // HE0
+    {TIM5,  GPIO('A',  3),  4, GPIO_FUNCTION(2)}, // HE1 Tested - Working
+//    {TIM8,  GPIO('C',  6),  1, GPIO_FUNCTION(3)}, // cs_driver2
+//    {TIM8,  GPIO('C',  7),  2, GPIO_FUNCTION(3)}, // cs_driver3
+//    {TIM8,  GPIO('C',  8),  3, GPIO_FUNCTION(3)}, // sdio
+//    {TIM8,  GPIO('C',  9),  4, GPIO_FUNCTION(3)}, // sdio
+    {TIM9,  GPIO('E',  5),  1, GPIO_FUNCTION(3)},, // FAN1 Tested - Working
+//    {TIM9,  GPIO('E',  6),  2, GPIO_FUNCTION(3)}, // step_driver7
+    {TIM10, GPIO('B',  8),  1, GPIO_FUNCTION(3)}, // I2C_SCL
+//    {TIM10, GPIO('F',  6),  1, GPIO_FUNCTION(3)}, // T2
+    {TIM11, GPIO('B',  9),  1, GPIO_FUNCTION(3)}, // I2C_SDA
+//    {TIM11, GPIO('F',  7),  1, GPIO_FUNCTION(3)}, // T3
+//    {TIM12, GPIO('B', 14),  1, GPIO_FUNCTION(9)}, // USB
+//    {TIM12, GPIO('B', 15),  2, GPIO_FUNCTION(9)}, // USB
+    {TIM13, GPIO('A',  6),  1, GPIO_FUNCTION(9)}, // EXP2_1 Tested - Working
+//    {TIM13, GPIO('F',  8),  1, GPIO_FUNCTION(9)}, // PT100
+    {TIM14, GPIO('A',  7),  1, GPIO_FUNCTION(9)} // EXP2_6 Tested - Working ?
+//    {TIM14, GPIO('F',  9),  1, GPIO_FUNCTION(9)} // step_driver4
 #endif
 };
 
