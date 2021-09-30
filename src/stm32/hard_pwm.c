@@ -55,7 +55,7 @@ static const struct gpio_pwm_info pwm_regs[] = {
     {TIM2,  GPIO('B',  2),  4, GPIO_FUNCTION(1)}, //   EXP2_5
     {TIM2,  GPIO('B', 11),  4, GPIO_FUNCTION(1)}, //   HE3              Tested - Working
 //    {TIM3,  GPIO('B',  4),  1, GPIO_FUNCTION(2)}, // SPI3             Tested - Working
-//    {TIM3,  GPIO('A',  7),  2, GPIO_FUNCTION(2)}, // EXP2_6           Tested - Working ?????
+//    {TIM3,  GPIO('A',  7),  2, GPIO_FUNCTION(2)}, // EXP2_6           Tested - Working ????? Repeat is unknown which one works
 //    {TIM3,  GPIO('B',  5),  2, GPIO_FUNCTION(2)}, // SPI3             Tested - Working
     {TIM3,  GPIO('B',  0),  3, GPIO_FUNCTION(2)}, //   RGB_LED
     {TIM3,  GPIO('B',  1),  4, GPIO_FUNCTION(2)}, //   EXP2_3
@@ -83,7 +83,7 @@ static const struct gpio_pwm_info pwm_regs[] = {
 //    {TIM12, GPIO('B', 15),  2, GPIO_FUNCTION(9)}, // USB
     {TIM13, GPIO('A',  6),  1, GPIO_FUNCTION(9)}, //   EXP2_1           Tested - Working
 //    {TIM13, GPIO('F',  8),  1, GPIO_FUNCTION(9)}, // PT100
-    {TIM14, GPIO('A',  7),  1, GPIO_FUNCTION(9)} //    EXP2_6           Tested - Working ?????
+    {TIM14, GPIO('A',  7),  1, GPIO_FUNCTION(9)} //    EXP2_6           Tested - Working ????? Repeat is unknown which one works
 //    {TIM14, GPIO('F',  9),  1, GPIO_FUNCTION(9)} //  STEP_DRIVER4
 #endif
 };
