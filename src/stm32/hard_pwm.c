@@ -69,7 +69,6 @@ static const struct gpio_pwm_info pwm_regs[] = {
 //    {TIM9,  GPIO('E',  6),  2, GPIO_FUNCTION(3)}, //STEP_DRIVER7
     {TIM10, GPIO('B',  8),  1, GPIO_FUNCTION(3)}, //  I2C_SCL Working
     {TIM11, GPIO('B',  9),  1, GPIO_FUNCTION(3)}, //  I2C_SDA Working
-//    {TIM11, GPIO('F',  7),  1, GPIO_FUNCTION(3)}, //T3
 //    {TIM12, GPIO('B', 14),  1, GPIO_FUNCTION(9)}, //USB
 //    {TIM12, GPIO('B', 15),  2, GPIO_FUNCTION(9)}, //USB
     {TIM13, GPIO('A',  6),  1, GPIO_FUNCTION(9)}, //  EXP2_1  Working
