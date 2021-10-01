@@ -50,18 +50,18 @@ static const struct gpio_pwm_info pwm_regs[] = {
 //    {TIM1,  GPIO('E',  9),  1, GPIO_FUNCTION(1)}, // EXP1_3           Tested - Not Working
     {TIM2,  GPIO('A',  5),  1, GPIO_FUNCTION(1)}, //   EXP2_2           Tested - Working
 //    {TIM2,  GPIO('A', 15),  1, GPIO_FUNCTION(1)}, // SPI3             Tested - Working
-//    {TIM2,  GPIO('B',  3),  2, GPIO_FUNCTION(1)}, // SPI3
+    {TIM2,  GPIO('B',  3),  2, GPIO_FUNCTION(1)}, //   SPI3
     {TIM2,  GPIO('B', 10),  3, GPIO_FUNCTION(1)}, //   HE2              Tested - Working
-    {TIM2,  GPIO('B',  2),  4, GPIO_FUNCTION(1)}, //   EXP2_5
-    {TIM2,  GPIO('B', 11),  4, GPIO_FUNCTION(1)}, //   HE3              Tested - Working
+//    {TIM2,  GPIO('B',  2),  4, GPIO_FUNCTION(1)}, // EXP2_5           Tested - Working Two work synchronously at once TIM2 4canel 1funcion
+    {TIM2,  GPIO('B', 11),  4, GPIO_FUNCTION(1)}, //   HE3              Tested - Working Two work synchronously at once TIM2 4canel 1funcion
 //    {TIM3,  GPIO('B',  4),  1, GPIO_FUNCTION(2)}, // SPI3             Tested - Working
-//    {TIM3,  GPIO('A',  7),  2, GPIO_FUNCTION(2)}, // EXP2_6           Tested - Working ????? Repeat is unknown which one works
+//    {TIM3,  GPIO('A',  7),  2, GPIO_FUNCTION(2)}, // EXP2_6           Tested - Working  Repeat 
 //    {TIM3,  GPIO('B',  5),  2, GPIO_FUNCTION(2)}, // SPI3             Tested - Working
-    {TIM3,  GPIO('B',  0),  3, GPIO_FUNCTION(2)}, //   RGB_LED
-    {TIM3,  GPIO('B',  1),  4, GPIO_FUNCTION(2)}, //   EXP2_3
-    {TIM4,  GPIO('B',  6),  1, GPIO_FUNCTION(2)}, //   PWM_BL_TOUCH
+    {TIM3,  GPIO('B',  0),  3, GPIO_FUNCTION(2)}, //   RGB_LED          Tested - Working
+    {TIM3,  GPIO('B',  1),  4, GPIO_FUNCTION(2)}, //   EXP2_3           Tested - Working
+//    {TIM4,  GPIO('B',  6),  1, GPIO_FUNCTION(2)}, // PWM_BL_TOUCH     Tested - Not Working crash mcu PWM already programmed at different speed
     {TIM4,  GPIO('D', 12),  1, GPIO_FUNCTION(2)}, //   FAN2             Tested - Working
-//    {TIM4,  GPIO('B',  7),  2, GPIO_FUNCTION(2)}, // END_BL_TOUCH
+//    {TIM4,  GPIO('B',  7),  2, GPIO_FUNCTION(2)}, // END_BL_TOUCH     Tested - Not Working crash mcu PWM already programmed at different speed
     {TIM4,  GPIO('D', 13),  2, GPIO_FUNCTION(2)}, //   FAN3             Tested - Working
 //    {TIM4,  GPIO('D', 14),  3, GPIO_FUNCTION(2)}, // FAN4             Tested - Not Working crash mcu PWM already programmed at different speed
 //    {TIM4,  GPIO('D', 15),  4, GPIO_FUNCTION(2)}, // FAN5             Tested - Not Working crash mcu PWM already programmed at different speed
@@ -75,15 +75,15 @@ static const struct gpio_pwm_info pwm_regs[] = {
 //    {TIM8,  GPIO('C',  9),  4, GPIO_FUNCTION(3)}, // sdio
     {TIM9,  GPIO('E',  5),  1, GPIO_FUNCTION(3)}, //   FAN1             Tested - Working
 //    {TIM9,  GPIO('E',  6),  2, GPIO_FUNCTION(3)}, // STEP_DRIVER7
-    {TIM10, GPIO('B',  8),  1, GPIO_FUNCTION(3)}, //   I2C_SCL
+    {TIM10, GPIO('B',  8),  1, GPIO_FUNCTION(3)}, //   I2C_SCL          Tested - Working
 //    {TIM10, GPIO('F',  6),  1, GPIO_FUNCTION(3)}, // T2
-    {TIM11, GPIO('B',  9),  1, GPIO_FUNCTION(3)}, //   I2C_SDA
+    {TIM11, GPIO('B',  9),  1, GPIO_FUNCTION(3)}, //   I2C_SDA          Tested - Working
 //    {TIM11, GPIO('F',  7),  1, GPIO_FUNCTION(3)}, // T3
 //    {TIM12, GPIO('B', 14),  1, GPIO_FUNCTION(9)}, // USB
 //    {TIM12, GPIO('B', 15),  2, GPIO_FUNCTION(9)}, // USB
     {TIM13, GPIO('A',  6),  1, GPIO_FUNCTION(9)}, //   EXP2_1           Tested - Working
 //    {TIM13, GPIO('F',  8),  1, GPIO_FUNCTION(9)}, // PT100
-    {TIM14, GPIO('A',  7),  1, GPIO_FUNCTION(9)} //    EXP2_6           Tested - Working ????? Repeat is unknown which one works
+    {TIM14, GPIO('A',  7),  1, GPIO_FUNCTION(9)} //    EXP2_6           Tested - Working  Repeat
 //    {TIM14, GPIO('F',  9),  1, GPIO_FUNCTION(9)} //  STEP_DRIVER4
 #endif
 };
