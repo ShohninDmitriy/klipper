@@ -61,6 +61,8 @@ static const struct gpio_pwm_info pwm_regs[] = {
 //    {TIM4,  GPIO('B',  6),  1, GPIO_FUNCTION(2)}, //PWM_BL  Not Working D4
     {TIM4,  GPIO('D', 13),  2, GPIO_FUNCTION(2)}, //  FAN3    Working     D5
 //    {TIM4,  GPIO('B',  7),  2, GPIO_FUNCTION(2)}, //END_BL  Not Working D5
+//    {TIM4,  GPIO('D', 14),  3, GPIO_FUNCTION(2)}, //FAN4    Not Working 
+//    {TIM4,  GPIO('D', 15),  4, GPIO_FUNCTION(2)}, //FAN5    Not Working 
 //    {TIM5,  GPIO('A',  0),  1, GPIO_FUNCTION(2)}, //EN_DRIVER3          D6
     {TIM5,  GPIO('A',  1),  2, GPIO_FUNCTION(2)}, //  HBED    Working     D6
     {TIM5,  GPIO('A',  2),  3, GPIO_FUNCTION(2)}, //  HE0     Working
