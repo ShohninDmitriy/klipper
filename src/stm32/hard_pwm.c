@@ -45,44 +45,52 @@ static const struct gpio_pwm_info pwm_regs[] = {
     {TIM4, GPIO('B', 7),  2, GPIO_FUNCTION(2)},
     {TIM4, GPIO('B', 8),  3, GPIO_FUNCTION(2)},
     {TIM4, GPIO('B', 9),  4, GPIO_FUNCTION(2)}
-#elif CONFIG_MACH_STM32F446 // BTT Octopus V1.1
-    {TIM2,  GPIO('A',  5),  1, GPIO_FUNCTION(1)}, //  EXP2_2  Working     D1
-//    {TIM2,  GPIO('A', 15),  1, GPIO_FUNCTION(1)}, //SPI3    Working     D1
-    {TIM2,  GPIO('B',  3),  2, GPIO_FUNCTION(1)}, //  SPI3    Working
-    {TIM2,  GPIO('B', 10),  3, GPIO_FUNCTION(1)}, //  HE2     Working
-//    {TIM2,  GPIO('B',  2),  4, GPIO_FUNCTION(1)}, //EXP2_5  Working     D2
-    {TIM2,  GPIO('B', 11),  4, GPIO_FUNCTION(1)}, //  HE3     Working     D2
-    {TIM3,  GPIO('B',  4),  1, GPIO_FUNCTION(2)}, //  SPI3    Working
-//    {TIM3,  GPIO('A',  7),  2, GPIO_FUNCTION(2)}, //EXP2_6  Working     D3
-    {TIM3,  GPIO('B',  5),  2, GPIO_FUNCTION(2)}, //  SPI3    Working     D3
-    {TIM3,  GPIO('B',  0),  3, GPIO_FUNCTION(2)}, //  RGB_LED Working
-    {TIM3,  GPIO('B',  1),  4, GPIO_FUNCTION(2)}, //  EXP2_3  Working
-    {TIM4,  GPIO('D', 12),  1, GPIO_FUNCTION(2)}, //  FAN2    Working     D4
-//    {TIM4,  GPIO('B',  6),  1, GPIO_FUNCTION(2)}, //PWM_BL  Not Working D4
-    {TIM4,  GPIO('D', 13),  2, GPIO_FUNCTION(2)}, //  FAN3    Working     D5
-//    {TIM4,  GPIO('B',  7),  2, GPIO_FUNCTION(2)}, //END_BL  Not Working D5
-//    {TIM4,  GPIO('D', 14),  3, GPIO_FUNCTION(2)}, //FAN4    Not Working
-//    {TIM4,  GPIO('D', 15),  4, GPIO_FUNCTION(2)}, //FAN5    Not Working
-//    {TIM5,  GPIO('A',  0),  1, GPIO_FUNCTION(2)}, //EN_DRIVER3          D6
-    {TIM5,  GPIO('A',  1),  2, GPIO_FUNCTION(2)}, //  HBED    Working     D6
-    {TIM5,  GPIO('A',  2),  3, GPIO_FUNCTION(2)}, //  HE0     Working
-    {TIM5,  GPIO('A',  3),  4, GPIO_FUNCTION(2)}, //  HE1     Working
-//    {TIM8,  GPIO('C',  6),  1, GPIO_FUNCTION(3)}, //CS_DRIVER2
-//    {TIM8,  GPIO('C',  7),  2, GPIO_FUNCTION(3)}, //CS_DRIVER3
-//    {TIM8,  GPIO('C',  8),  3, GPIO_FUNCTION(3)}, //sdio
-//    {TIM8,  GPIO('C',  9),  4, GPIO_FUNCTION(3)}, //sdio
-    {TIM9,  GPIO('E',  5),  1, GPIO_FUNCTION(3)}, //  FAN1    Working
-//    {TIM9,  GPIO('E',  6),  2, GPIO_FUNCTION(3)}, //STEP_DRIVER7
-    {TIM10, GPIO('B',  8),  1, GPIO_FUNCTION(3)}, //  I2C_SCL Working     D7
-//    {TIM10, GPIO('F',  6),  1, GPIO_FUNCTION(3)}, //T2                  D7
-    {TIM11, GPIO('B',  9),  1, GPIO_FUNCTION(3)}, //  I2C_SDA Working     D8
-//    {TIM11, GPIO('F',  7),  1, GPIO_FUNCTION(3)}, //T3                  D8
-//    {TIM12, GPIO('B', 14),  1, GPIO_FUNCTION(9)}, //USB
-//    {TIM12, GPIO('B', 15),  2, GPIO_FUNCTION(9)}, //USB
-    {TIM13, GPIO('A',  6),  1, GPIO_FUNCTION(9)}, //  EXP2_1  Working     D9
-//    {TIM13, GPIO('F',  8),  1, GPIO_FUNCTION(9)}, //PT100               D9
-    {TIM14, GPIO('A',  7),  1, GPIO_FUNCTION(9)} //   EXP2_6  Working     D10
-//    {TIM14, GPIO('F',  9),  1, GPIO_FUNCTION(9)} // STEP_DRIVER4        D10
+#elif CONFIG_MACH_STM32F446 //                          Octopus V1.1   Spider v1.1   Rumba32           S6 v2.0        Working
+//    {TIM1,  GPIO('A',  8),  1, GPIO_FUNCTION(1)},  // FAN0         / EXP1_2       / FAN1            / EXP1_2       / No  D1
+//    {TIM1,  GPIO('E',  9),  1, GPIO_FUNCTION(1)},  // EXP1_3       / X-EN         / EXP1_3          / X-EN         / No  D1
+//    {TIM1,  GPIO('A',  9),  2, GPIO_FUNCTION(1)},  // TX1          / TX1          / EXP3_11         / TX1          / No  D2
+//    {TIM1,  GPIO('E', 11),  2, GPIO_FUNCTION(1)},  // PS_ON        / X-Step       / PS_ON           / X-Step       / No  D2
+//    {TIM1,  GPIO('A', 10),  3, GPIO_FUNCTION(1)},  // RX1          / RX1          / EXP3_10         / RX1          / No  D3
+//    {TIM1,  GPIO('E', 13),  3, GPIO_FUNCTION(1)},  // EXP1_6       / MISO SPI4 DR / EXP1_6          / MISO SPI4 DR / No  D3
+//    {TIM1,  GPIO('A', 11),  4, GPIO_FUNCTION(1)},  // TYPE_C       / USB D        / USB D           / USB D        / No  D4
+//    {TIM1,  GPIO('E', 14),  4, GPIO_FUNCTION(1)},  // EXP1_7       / MOSI SPI4 DR / EXP1_7          / MOSI SPI4 DR / No  D4
+    {TIM2,  GPIO('A',  5),  1, GPIO_FUNCTION(1)},    // EXP2_2       / EXP2_2       / EXP2_2          / EXP2_2       / Yes D5
+//    {TIM2,  GPIO('A', 15),  1, GPIO_FUNCTION(1)},  // SPI3         / E3-CS        / -----           / E0-CS        / Yes D5
+    {TIM2,  GPIO('B',  3),  2, GPIO_FUNCTION(1)},    // SPI3         / HE2          / -----           / HE0          / Yes
+    {TIM2,  GPIO('B', 10),  3, GPIO_FUNCTION(1)},    // HE2          / EXP2_7       / -----           / EXP2_7       / Yes
+    {TIM2,  GPIO('B',  2),  4, GPIO_FUNCTION(1)},    // EXP2_5       / FAN2         / EXP2_3          / FAN2         / Yes D6
+    {TIM2,  GPIO('B', 11),  4, GPIO_FUNCTION(1)},    // HE3          / -----        / -----           / -----        / Yes D6
+    {TIM3,  GPIO('B',  4),  1, GPIO_FUNCTION(2)},    // SPI3         / HB           / -----           / HE1          / Yes
+//    {TIM3,  GPIO('A',  7),  2, GPIO_FUNCTION(2)},  // EXP2_6       / EXP2_6       / EXP2_6          / EXP2_6       / Yes D7
+    {TIM3,  GPIO('B',  5),  2, GPIO_FUNCTION(2)},    // SPI3         / LED-G fan4   / E0-Step         / -----        / Yes D7
+    {TIM3,  GPIO('B',  0),  3, GPIO_FUNCTION(2)},    // RGB_LED      / FAN0         / EXP2_7          / FAN0         / Yes
+    {TIM3,  GPIO('B',  1),  4, GPIO_FUNCTION(2)},    // EXP2_3       / FAN1         / EXP2_5          / FAN1         / Yes
+    {TIM4,  GPIO('D', 12),  1, GPIO_FUNCTION(2)},    // FAN2         / E3-Step      / EXP3_14         / Z-CS         / Yes D8
+    {TIM4,  GPIO('B',  6),  1, GPIO_FUNCTION(2)},    // PWM_BL       / LED-R fan3   / E0-DIR          / -----        / No  D8
+    {TIM4,  GPIO('D', 13),  2, GPIO_FUNCTION(2)},    // FAN3         / Z-DIR        / Z-TX EXP3_13    / Z-DIR        / Yes D9
+    {TIM4,  GPIO('B',  7),  2, GPIO_FUNCTION(2)},    // END_BL       / LED-B fan5   / Z-EN            / -----        / No  D9
+    {TIM4,  GPIO('D', 14),  3, GPIO_FUNCTION(2)},    // FAN4         / Z-Step       / E0-TX EXP3_5    / Z-Step       / No
+    {TIM4,  GPIO('D', 15),  4, GPIO_FUNCTION(2)},    // FAN5         / Z-EN         / E1-TX EXP3_6    / Z-EN         / No
+//    {TIM5,  GPIO('A',  0),  1, GPIO_FUNCTION(2)},  // EN_DRIVER3   / Z-MIN        / X-Step          / Z-MIN        /     D10
+    {TIM5,  GPIO('A',  1),  2, GPIO_FUNCTION(2)},    // HBED         / X-MAX        / HB              / X-MAX        / Yes D10
+    {TIM5,  GPIO('A',  2),  3, GPIO_FUNCTION(2)},    // HE0          / Y-MAX        / EXP2_4          / Y-MAX        / Yes
+    {TIM5,  GPIO('A',  3),  4, GPIO_FUNCTION(2)},    // HE1          / Z-MAX(Probe) / X-TX EXP3_8     / Z-MAX        / Yes
+    {TIM8,  GPIO('C',  6),  1, GPIO_FUNCTION(3)},    // CS_DRIVER2   / EXP2_3       / HE0             / EXP2_3       /
+    {TIM8,  GPIO('C',  7),  2, GPIO_FUNCTION(3)},    // CS_DRIVER3   / EXP2_5       / HE1             / EXP2_5       /
+    {TIM8,  GPIO('C',  8),  3, GPIO_FUNCTION(3)},    // sdio         / HE1          / HE2             / HB           /
+    {TIM8,  GPIO('C',  9),  4, GPIO_FUNCTION(3)},    // sdio         / EXP1_1       / FAN0            / EXP1_1       /
+    {TIM9,  GPIO('E',  5),  1, GPIO_FUNCTION(3)},    // FAN1         / E1-EN        / Y-Step          / E1-EN        / Yes
+//    {TIM9,  GPIO('E',  6),  2, GPIO_FUNCTION(3)},  // Step_DRIVER7 / E1-Step      / Y-DIR           / E1-Step      /
+    {TIM10, GPIO('B',  8),  1, GPIO_FUNCTION(3)},    // I2C_SCL      / I2C_SCL      / I2C_SCL EXP3_9  / I2C_SCL      / Yes D11
+//    {TIM10, GPIO('F',  6),  1, GPIO_FUNCTION(3)},  // T2           / -----        / -----           / -----        /     D11
+    {TIM11, GPIO('B',  9),  1, GPIO_FUNCTION(3)},    // I2C_SDA      / I2C_SDA      / I2C_SDA EXP3_10 / I2C_SDA      / Yes D12
+//    {TIM11, GPIO('F',  7),  1, GPIO_FUNCTION(3)},  // T3           / -----        / -----           / -----        /     D12
+//    {TIM12, GPIO('B', 14),  1, GPIO_FUNCTION(9)},  // USB          / X-MIN        / LED             / X-MIN        /
+    {TIM12, GPIO('B', 15),  2, GPIO_FUNCTION(9)},    // USB          / HE0          / Y-MIN           / HE2          /
+    {TIM13, GPIO('A',  6),  1, GPIO_FUNCTION(9)},    // EXP2_1       / EXP2_1       / EXP2_1          / EXP2_1       / Yes D13
+//    {TIM13, GPIO('F',  8),  1, GPIO_FUNCTION(9)},  // PT100        / -----        / -----           / -----        /     D13
+    {TIM14, GPIO('A',  7),  1, GPIO_FUNCTION(9)}     // EXP2_6       / EXP2_6       / EXP2_6          / EXP2_6       / Yes D14
+//    {TIM14, GPIO('F',  9),  1, GPIO_FUNCTION(9)}   // Step_DRIVER4 / -----        / -----           / -----        /     D14
 #endif
 };
 
