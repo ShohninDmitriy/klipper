@@ -45,8 +45,8 @@ static const struct gpio_pwm_info pwm_regs[] = {
     {TIM4, GPIO('B', 7),  2, GPIO_FUNCTION(2)},
     {TIM4, GPIO('B', 8),  3, GPIO_FUNCTION(2)},
     {TIM4, GPIO('B', 9),  4, GPIO_FUNCTION(2)}
-#elif CONFIG_MACH_STM32F446 //                          Octopus V1.1   Spider v1.1   Rumba32           S6 v2.0        Working
-//    {TIM1,  GPIO('A',  8),  1, GPIO_FUNCTION(1)},  // FAN0         / EXP1_2       / FAN1            / EXP1_2       / No  D1
+#elif CONFIG_MACH_STM32F446 //                          Octopus V1.1   Spider v1.1   Rumba32           S6 v2.0        Working Octopus
+    {TIM1,  GPIO('A',  8),  1, GPIO_FUNCTION(1)},    // FAN0         / EXP1_2       / FAN1            / EXP1_2       / No  D1
 //    {TIM1,  GPIO('E',  9),  1, GPIO_FUNCTION(1)},  // EXP1_3       / X-EN         / EXP1_3          / X-EN         / No  D1
 //    {TIM1,  GPIO('A',  9),  2, GPIO_FUNCTION(1)},  // TX1          / TX1          / EXP3_11         / TX1          / No  D2
 //    {TIM1,  GPIO('E', 11),  2, GPIO_FUNCTION(1)},  // PS_ON        / X-Step       / PS_ON           / X-Step       / No  D2
