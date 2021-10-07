@@ -4,6 +4,7 @@
 //
 // This file may be distributed under the terms of the GNU GPLv3 license.
 
+#include "autoconf.h" // CONFIG_MACH_STM32H7
 #include "board/irq.h" // irq_save
 #include "command.h" // shutdown
 #include "gpio.h" // gpio_pwm_write
@@ -19,7 +20,7 @@ struct gpio_pwm_info {
 };
 
 static const struct gpio_pwm_info pwm_regs[] = {
-//  {timer, pin,    channel, function}
+    //  {timer, pin,    channel, function}
 #if CONFIG_MACH_STM32F103
     {TIM2, GPIO('A', 0),  1, GPIO_FUNCTION(2)},
     {TIM2, GPIO('A', 1),  2, GPIO_FUNCTION(2)},
@@ -47,13 +48,13 @@ static const struct gpio_pwm_info pwm_regs[] = {
     {TIM4, GPIO('B', 9),  4, GPIO_FUNCTION(2)}
 #elif CONFIG_MACH_STM32F446 //                              Working Octopus
     {TIM2,  GPIO('A',  5),  1, GPIO_FUNCTION(1)},    // EXP2_2       Yes D5
-//    {TIM2,  GPIO('A', 15),  1, GPIO_FUNCTION(1)},  // SPI3         Yes D5
+    {TIM2,  GPIO('A', 15),  1, GPIO_FUNCTION(1)},    // SPI3         Yes D5
     {TIM2,  GPIO('B',  3),  2, GPIO_FUNCTION(1)},    // SPI3         Yes
     {TIM2,  GPIO('B', 10),  3, GPIO_FUNCTION(1)},    // HE2          Yes
     {TIM2,  GPIO('B',  2),  4, GPIO_FUNCTION(1)},    // EXP2_5       Yes D6
     {TIM2,  GPIO('B', 11),  4, GPIO_FUNCTION(1)},    // HE3          Yes D6
     {TIM3,  GPIO('B',  4),  1, GPIO_FUNCTION(2)},    // SPI3         Yes
-//    {TIM3,  GPIO('A',  7),  2, GPIO_FUNCTION(2)},  // EXP2_6       Yes D7
+    {TIM3,  GPIO('A',  7),  2, GPIO_FUNCTION(2)},    // EXP2_6       Yes D7
     {TIM3,  GPIO('B',  5),  2, GPIO_FUNCTION(2)},    // SPI3         Yes D7
     {TIM3,  GPIO('B',  0),  3, GPIO_FUNCTION(2)},    // RGB_LED      Yes
     {TIM3,  GPIO('B',  1),  4, GPIO_FUNCTION(2)},    // EXP2_3       Yes
@@ -63,7 +64,7 @@ static const struct gpio_pwm_info pwm_regs[] = {
     {TIM4,  GPIO('B',  7),  2, GPIO_FUNCTION(2)},    // END_BL       No  D9
     {TIM4,  GPIO('D', 14),  3, GPIO_FUNCTION(2)},    // FAN4         No
     {TIM4,  GPIO('D', 15),  4, GPIO_FUNCTION(2)},    // FAN5         No
-//    {TIM5,  GPIO('A',  0),  1, GPIO_FUNCTION(2)},  // EN_DRIVER3   ?   D10
+    {TIM5,  GPIO('A',  0),  1, GPIO_FUNCTION(2)},    // EN_DRIVER3   ?   D10
     {TIM5,  GPIO('A',  1),  2, GPIO_FUNCTION(2)},    // HBED         Yes D10
     {TIM5,  GPIO('A',  2),  3, GPIO_FUNCTION(2)},    // HE0          Yes
     {TIM5,  GPIO('A',  3),  4, GPIO_FUNCTION(2)},    // HE1          Yes
@@ -72,17 +73,59 @@ static const struct gpio_pwm_info pwm_regs[] = {
     {TIM8,  GPIO('C',  8),  3, GPIO_FUNCTION(3)},    // sdio         ?
     {TIM8,  GPIO('C',  9),  4, GPIO_FUNCTION(3)},    // sdio         ?
     {TIM9,  GPIO('E',  5),  1, GPIO_FUNCTION(3)},    // FAN1         Yes
-//    {TIM9,  GPIO('E',  6),  2, GPIO_FUNCTION(3)},  // Step_DRIVER7 ?
+    {TIM9,  GPIO('E',  6),  2, GPIO_FUNCTION(3)},    // Step_DRIVER7 ?
     {TIM10, GPIO('B',  8),  1, GPIO_FUNCTION(3)},    // I2C_SCL      Yes D11
-//    {TIM10, GPIO('F',  6),  1, GPIO_FUNCTION(3)},  // T2           ?   D11
+    {TIM10, GPIO('F',  6),  1, GPIO_FUNCTION(3)},    // T2           ?   D11
     {TIM11, GPIO('B',  9),  1, GPIO_FUNCTION(3)},    // I2C_SDA      Yes D12
-//    {TIM11, GPIO('F',  7),  1, GPIO_FUNCTION(3)},  // T3           ?   D12
-//    {TIM12, GPIO('B', 14),  1, GPIO_FUNCTION(9)},  // USB          ?
+    {TIM11, GPIO('F',  7),  1, GPIO_FUNCTION(3)},    // T3           ?   D12
+    {TIM12, GPIO('B', 14),  1, GPIO_FUNCTION(9)},    // USB          ?
     {TIM12, GPIO('B', 15),  2, GPIO_FUNCTION(9)},    // USB          ?
     {TIM13, GPIO('A',  6),  1, GPIO_FUNCTION(9)},    // EXP2_1       Yes D13
-//    {TIM13, GPIO('F',  8),  1, GPIO_FUNCTION(9)},  // PT100        ?   D13
-    {TIM14, GPIO('A',  7),  1, GPIO_FUNCTION(9)}     // EXP2_6       Yes D14
-//    {TIM14, GPIO('F',  9),  1, GPIO_FUNCTION(9)}   // Step_DRIVER4 ?   D14
+    {TIM13, GPIO('F',  8),  1, GPIO_FUNCTION(9)},    // PT100        ?   D13
+    {TIM14, GPIO('A',  7),  1, GPIO_FUNCTION(9)},    // EXP2_6       Yes D14
+    {TIM14, GPIO('F',  9),  1, GPIO_FUNCTION(9)}     // Step_DRIVER4 ?   D14
+#elif CONFIG_MACH_STM32H7
+    {TIM2, GPIO('A', 0),  1, GPIO_FUNCTION(1)},
+    {TIM2, GPIO('A', 5),  1, GPIO_FUNCTION(1)},
+    {TIM2, GPIO('A', 15), 1, GPIO_FUNCTION(1)},
+    {TIM2, GPIO('B', 3),  2, GPIO_FUNCTION(1)},
+    {TIM2, GPIO('A', 1),  2, GPIO_FUNCTION(1)},
+    {TIM2, GPIO('B', 10), 3, GPIO_FUNCTION(1)},
+    {TIM2, GPIO('A', 2),  3, GPIO_FUNCTION(1)},
+    {TIM3, GPIO('C', 6),  1, GPIO_FUNCTION(2)},
+    {TIM3, GPIO('B', 4),  1, GPIO_FUNCTION(2)},
+    {TIM3, GPIO('A', 6),  1, GPIO_FUNCTION(2)},
+    {TIM3, GPIO('C', 7),  2, GPIO_FUNCTION(2)},
+    {TIM3, GPIO('B', 5),  2, GPIO_FUNCTION(2)},
+    {TIM3, GPIO('A', 7),  2, GPIO_FUNCTION(2)},
+    {TIM3, GPIO('C', 8),  3, GPIO_FUNCTION(2)},
+    {TIM3, GPIO('B', 0),  3, GPIO_FUNCTION(2)},
+    {TIM4, GPIO('D', 12), 1, GPIO_FUNCTION(2)},
+    {TIM4, GPIO('B', 6),  1, GPIO_FUNCTION(2)},
+    {TIM4, GPIO('D', 13), 2, GPIO_FUNCTION(2)},
+    {TIM4, GPIO('B', 7),  2, GPIO_FUNCTION(2)},
+    {TIM4, GPIO('D', 14), 3, GPIO_FUNCTION(2)},
+    {TIM4, GPIO('B', 8),  3, GPIO_FUNCTION(2)},
+    {TIM5, GPIO('H', 10), 1, GPIO_FUNCTION(2)},
+    {TIM5, GPIO('A', 0),  1, GPIO_FUNCTION(2)},
+    {TIM5, GPIO('H', 11), 2, GPIO_FUNCTION(2)},
+    {TIM5, GPIO('A', 1),  2, GPIO_FUNCTION(2)},
+    {TIM5, GPIO('H', 12), 3, GPIO_FUNCTION(2)},
+    {TIM5, GPIO('A', 2),  3, GPIO_FUNCTION(2)},
+    {TIM12, GPIO('H', 6),  1, GPIO_FUNCTION(2)},
+    {TIM12, GPIO('B', 14), 1, GPIO_FUNCTION(2)},
+    {TIM12, GPIO('H', 9),  2, GPIO_FUNCTION(2)},
+    {TIM12, GPIO('B', 15), 2, GPIO_FUNCTION(2)},
+    {TIM13, GPIO('F', 8),  1, GPIO_FUNCTION(9)},
+    {TIM13, GPIO('A', 6),  1, GPIO_FUNCTION(9)},
+    {TIM14, GPIO('F', 9),  1, GPIO_FUNCTION(9)},
+    {TIM14, GPIO('A', 7),  1, GPIO_FUNCTION(9)},
+    {TIM15, GPIO('E', 5),  1, GPIO_FUNCTION(4)},
+    {TIM15, GPIO('A', 2),  1, GPIO_FUNCTION(4)},
+    {TIM16, GPIO('F', 6),  1, GPIO_FUNCTION(1)},
+    {TIM16, GPIO('B', 8),  1, GPIO_FUNCTION(1)},
+    {TIM17, GPIO('F', 7),  1, GPIO_FUNCTION(1)},
+    {TIM17, GPIO('B', 9),  1, GPIO_FUNCTION(1)}
 #endif
 };
 
@@ -173,7 +216,9 @@ gpio_pwm_setup(uint8_t pin, uint32_t cycle_time, uint8_t val){
     }
     // Enable PWM output
     p->timer->CR1 |= TIM_CR1_CEN;
-
+#if CONFIG_MACH_STM32H7
+    p->timer->BDTR |= TIM_BDTR_MOE;
+#endif
     return channel;
 }
 
