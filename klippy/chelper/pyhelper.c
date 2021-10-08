@@ -80,7 +80,7 @@ dump_string(char *outbuf, int outbuf_size, char *inbuf, int inbuf_size)
     uint8_t *inend = (void*)&inbuf[inbuf_size], *p = (void*)inbuf;
     while (p < inend && o < outend) {
         uint8_t c = *p++;
-        if (c > 31 && c < 255 && c != '\\') {
+        if (c > 31 && c < 127 && c != '\\') {
             *o++ = c;
             continue;
         }
