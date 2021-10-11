@@ -46,44 +46,36 @@ static const struct gpio_pwm_info pwm_regs[] = {
     {TIM4, GPIO('B', 7),  2, GPIO_FUNCTION(2)},
     {TIM4, GPIO('B', 8),  3, GPIO_FUNCTION(2)},
     {TIM4, GPIO('B', 9),  4, GPIO_FUNCTION(2)}
-#elif CONFIG_MACH_STM32F446 //                              Working Octopus
-    {TIM2,  GPIO('A',  5),  1, GPIO_FUNCTION(1)},    // EXP2_2       Yes D5
-    {TIM2,  GPIO('A', 15),  1, GPIO_FUNCTION(1)},    // SPI3         Yes D5
-    {TIM2,  GPIO('B',  3),  2, GPIO_FUNCTION(1)},    // SPI3         Yes
-    {TIM2,  GPIO('B', 10),  3, GPIO_FUNCTION(1)},    // HE2          Yes
-    {TIM2,  GPIO('B',  2),  4, GPIO_FUNCTION(1)},    // EXP2_5       Yes D6
-    {TIM2,  GPIO('B', 11),  4, GPIO_FUNCTION(1)},    // HE3          Yes D6
-    {TIM3,  GPIO('B',  4),  1, GPIO_FUNCTION(2)},    // SPI3         Yes
-    {TIM3,  GPIO('A',  7),  2, GPIO_FUNCTION(2)},    // EXP2_6       Yes D7
-    {TIM3,  GPIO('B',  5),  2, GPIO_FUNCTION(2)},    // SPI3         Yes D7
-    {TIM3,  GPIO('B',  0),  3, GPIO_FUNCTION(2)},    // RGB_LED      Yes
-    {TIM3,  GPIO('B',  1),  4, GPIO_FUNCTION(2)},    // EXP2_3       Yes
-    {TIM4,  GPIO('D', 12),  1, GPIO_FUNCTION(2)},    // FAN2         Yes D8
-    {TIM4,  GPIO('B',  6),  1, GPIO_FUNCTION(2)},    // PWM_BL       No  D8
-    {TIM4,  GPIO('D', 13),  2, GPIO_FUNCTION(2)},    // FAN3         Yes D9
-    {TIM4,  GPIO('B',  7),  2, GPIO_FUNCTION(2)},    // END_BL       No  D9
-    {TIM4,  GPIO('D', 14),  3, GPIO_FUNCTION(2)},    // FAN4         No
-    {TIM4,  GPIO('D', 15),  4, GPIO_FUNCTION(2)},    // FAN5         No
-    {TIM5,  GPIO('A',  0),  1, GPIO_FUNCTION(2)},    // EN_DRIVER3   ?   D10
-    {TIM5,  GPIO('A',  1),  2, GPIO_FUNCTION(2)},    // HBED         Yes D10
-    {TIM5,  GPIO('A',  2),  3, GPIO_FUNCTION(2)},    // HE0          Yes
-    {TIM5,  GPIO('A',  3),  4, GPIO_FUNCTION(2)},    // HE1          Yes
-    {TIM8,  GPIO('C',  6),  1, GPIO_FUNCTION(3)},    // CS_DRIVER2   ?
-    {TIM8,  GPIO('C',  7),  2, GPIO_FUNCTION(3)},    // CS_DRIVER3   ?
-    {TIM8,  GPIO('C',  8),  3, GPIO_FUNCTION(3)},    // sdio         ?
-    {TIM8,  GPIO('C',  9),  4, GPIO_FUNCTION(3)},    // sdio         ?
-    {TIM9,  GPIO('E',  5),  1, GPIO_FUNCTION(3)},    // FAN1         Yes
-    {TIM9,  GPIO('E',  6),  2, GPIO_FUNCTION(3)},    // Step_DRIVER7 ?
-    {TIM10, GPIO('B',  8),  1, GPIO_FUNCTION(3)},    // I2C_SCL      Yes D11
-    {TIM10, GPIO('F',  6),  1, GPIO_FUNCTION(3)},    // T2           ?   D11
-    {TIM11, GPIO('B',  9),  1, GPIO_FUNCTION(3)},    // I2C_SDA      Yes D12
-    {TIM11, GPIO('F',  7),  1, GPIO_FUNCTION(3)},    // T3           ?   D12
-    {TIM12, GPIO('B', 14),  1, GPIO_FUNCTION(9)},    // USB          ?
-    {TIM12, GPIO('B', 15),  2, GPIO_FUNCTION(9)},    // USB          ?
-    {TIM13, GPIO('A',  6),  1, GPIO_FUNCTION(9)},    // EXP2_1       Yes D13
-    {TIM13, GPIO('F',  8),  1, GPIO_FUNCTION(9)},    // PT100        ?   D13
-    {TIM14, GPIO('A',  7),  1, GPIO_FUNCTION(9)},    // EXP2_6       Yes D14
-    {TIM14, GPIO('F',  9),  1, GPIO_FUNCTION(9)}     // Step_DRIVER4 ?   D14
+#elif CONFIG_MACH_STM32F446
+    {TIM2,  GPIO('A',  5),  1, GPIO_FUNCTION(1)},
+    {TIM2,  GPIO('A', 15),  1, GPIO_FUNCTION(1)},
+    {TIM2,  GPIO('B',  3),  2, GPIO_FUNCTION(1)},
+    {TIM2,  GPIO('B', 10),  3, GPIO_FUNCTION(1)},
+    {TIM2,  GPIO('B',  2),  4, GPIO_FUNCTION(1)},
+    {TIM2,  GPIO('B', 11),  4, GPIO_FUNCTION(1)},
+    {TIM3,  GPIO('B',  4),  1, GPIO_FUNCTION(2)},
+    {TIM3,  GPIO('B',  5),  2, GPIO_FUNCTION(2)},
+    {TIM3,  GPIO('B',  0),  3, GPIO_FUNCTION(2)},
+    {TIM3,  GPIO('B',  1),  4, GPIO_FUNCTION(2)},
+    {TIM4,  GPIO('D', 12),  1, GPIO_FUNCTION(2)},
+    {TIM4,  GPIO('D', 13),  2, GPIO_FUNCTION(2)},
+    {TIM5,  GPIO('A',  0),  1, GPIO_FUNCTION(2)},
+    {TIM5,  GPIO('A',  1),  2, GPIO_FUNCTION(2)},
+    {TIM5,  GPIO('A',  2),  3, GPIO_FUNCTION(2)},
+    {TIM5,  GPIO('A',  3),  4, GPIO_FUNCTION(2)},
+    {TIM8,  GPIO('C',  6),  1, GPIO_FUNCTION(3)}, // ?
+    {TIM8,  GPIO('C',  7),  2, GPIO_FUNCTION(3)}, // ?
+    {TIM8,  GPIO('C',  8),  3, GPIO_FUNCTION(3)}, // ?
+    {TIM8,  GPIO('C',  9),  4, GPIO_FUNCTION(3)}, // ?
+    {TIM9,  GPIO('E',  5),  1, GPIO_FUNCTION(3)},
+    {TIM9,  GPIO('E',  6),  2, GPIO_FUNCTION(3)}, // ?
+    {TIM10, GPIO('B',  8),  1, GPIO_FUNCTION(3)},
+    {TIM11, GPIO('B',  9),  1, GPIO_FUNCTION(3)},
+    {TIM12, GPIO('B', 14),  1, GPIO_FUNCTION(9)}, // ?
+    {TIM12, GPIO('B', 15),  2, GPIO_FUNCTION(9)}, // ?
+    {TIM13, GPIO('A',  6),  1, GPIO_FUNCTION(9)},
+    {TIM14, GPIO('A',  7),  1, GPIO_FUNCTION(9)},
+    {TIM14, GPIO('F',  9),  1, GPIO_FUNCTION(9)} //  ?
 #elif CONFIG_MACH_STM32H7
     {TIM2, GPIO('A', 0),  1, GPIO_FUNCTION(1)},
     {TIM2, GPIO('A', 5),  1, GPIO_FUNCTION(1)},
