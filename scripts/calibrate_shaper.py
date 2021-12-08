@@ -1,11 +1,10 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python3
 # Shaper auto-calibration script
 #
 # Copyright (C) 2020  Dmitry Butyugin <dmbutyugin@google.com>
 # Copyright (C) 2020  Kevin O'Connor <kevin@koconnor.net>
 #
 # This file may be distributed under the terms of the GNU GPLv3 license.
-from __future__ import print_function
 import importlib, optparse, os, sys
 from textwrap import wrap
 import numpy as np, matplotlib
