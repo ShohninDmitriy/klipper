@@ -32,7 +32,7 @@ class ShellCommand:
             data = os.read(self.proc_fd, 4096)
         except Exception:
             pass
-        data = self.partial_output + data
+        data = self.partial_output + data.decode()
         if '\n' not in data:
             self.partial_output = data
             return
@@ -42,7 +42,7 @@ class ShellCommand:
             data = data[:split]
         else:
             self.partial_output = ""
-            self.gcode.respond_info(data)
+        self.gcode.respond_info(data)
 
     cmd_RUN_SHELL_COMMAND_help = "Run a linux shell command"
     def cmd_RUN_SHELL_COMMAND(self, params):
