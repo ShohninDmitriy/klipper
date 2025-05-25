@@ -174,8 +174,10 @@ The following commands are available when the
 [ADAPTIVE_MARGIN=<value>]`: This command probes the bed using generated points
 specified by the parameters in the config. After probing, a mesh is generated
 and z-movement is adjusted according to the mesh.
+The mesh is immediately active after successful completion of `BED_MESH_CALIBRATE`.
 The mesh will be saved into a profile specified by the `PROFILE` parameter,
-or `default` if unspecified.
+or `default` if unspecified. If ADAPTIVE=1 is specified then the profile
+name will begin with `adaptive-` and should not be saved for reuse.
 See the PROBE command for details on the optional probe parameters. If
 METHOD=manual is specified then the manual probing tool is activated - see the
 MANUAL_PROBE command above for details on the additional commands available
@@ -967,6 +969,25 @@ reports not triggered). Normally future G-Code commands will be
 scheduled to run after the stepper move completes, however if a manual
 stepper move uses SYNC=0 then future G-Code movement commands may run
 in parallel with the stepper movement.
+
+`MANUAL_STEPPER STEPPER=config_name GCODE_AXIS=[A-Z]
+[LIMIT_VELOCITY=<velocity>] [LIMIT_ACCEL=<accel>]
+[INSTANTANEOUS_CORNER_VELOCITY=<velocity>]`: If the `GCODE_AXIS`
+parameter is specified then it configures the stepper motor as an
+extra axis on `G1` move commands.  For example, if one were to issue a
+`MANUAL_STEPPER ... GCODE_AXIS=R` command then one could issue
+commands like `G1 X10 Y20 R30` to move the stepper motor.  The
+resulting moves will occur synchronously with the associated toolhead
+xyz movements.  If the motor is associated with a `GCODE_AXIS` then
+one may no longer issue movements using the above `MANUAL_STEPPER`
+command - one may unregister the stepper with a `MANUAL_STEPPER
+... GCODE_AXIS=` command to resume manual control of the motor. The
+`LIMIT_VELOCITY` and `LIMIT_ACCEL` parameters allow one to reduce the
+speed of `G1` moves if those moves would result in a velocity or
+acceleration above the specified limits. The
+`INSTANTANEOUS_CORNER_VELOCITY` specifies the maximum instantaneous
+velocity change (in mm/s) of the motor during the junction of two
+moves (the default is 1mm/s).
 
 ### [mcp4018]
 
