@@ -38,7 +38,7 @@ def calc_probe_z_average(positions, method='average'):
 # Helper to implement common probing commands
 class ProbeCommandHelper:
     def __init__(self, config, probe, query_endstop=None,
-                 replace_z_offset=False):
+                 can_set_z_offset=True):
         self.printer = config.get_printer()
         self.probe = probe
         self.query_endstop = query_endstop
@@ -55,16 +55,16 @@ class ProbeCommandHelper:
                                desc=self.cmd_PROBE_help)
         # PROBE_CALIBRATE command
         self.probe_calibrate_info = None
-        gcode.register_command('PROBE_CALIBRATE', self.cmd_PROBE_CALIBRATE,
-                               desc=self.cmd_PROBE_CALIBRATE_help)
+        if can_set_z_offset:
+            gcode.register_command('PROBE_CALIBRATE', self.cmd_PROBE_CALIBRATE,
+                                   desc=self.cmd_PROBE_CALIBRATE_help)
         # Other commands
         gcode.register_command('PROBE_ACCURACY', self.cmd_PROBE_ACCURACY,
                                desc=self.cmd_PROBE_ACCURACY_help)
-        if replace_z_offset:
-            return
-        gcode.register_command('Z_OFFSET_APPLY_PROBE',
-                               self.cmd_Z_OFFSET_APPLY_PROBE,
-                               desc=self.cmd_Z_OFFSET_APPLY_PROBE_help)
+        if can_set_z_offset:
+            gcode.register_command('Z_OFFSET_APPLY_PROBE',
+                                   self.cmd_Z_OFFSET_APPLY_PROBE,
+                                   desc=self.cmd_Z_OFFSET_APPLY_PROBE_help)
     def _move(self, coord, speed):
         self.printer.lookup_object('toolhead').manual_move(coord, speed)
     def get_status(self, eventtime):
@@ -270,7 +270,8 @@ class HomingViaProbeHelper:
         speed = self.param_helper.get_probe_params(gcmd)['probe_speed']
         phoming = self.printer.lookup_object('homing')
         ppos = phoming.probing_move(self.mcu_probe, pos, speed)
-        res = self.probe_offsets.create_probe_result(ppos)
+        offsets = self.probe_offsets.get_offsets()
+        res = manual_probe.create_probe_result(ppos, offsets)
         self.results.append(res)
     def pull_probed_results(self):
         res = self.results
@@ -379,7 +380,9 @@ class ProbeSessionHelper:
                 reason += HINT_TIMEOUT
             raise self.printer.command_error(reason)
         # Allow axis_twist_compensation to update results
-        self.printer.send_event("probe:update_results", [epos])
+        results = [epos]
+        self.printer.send_event("probe:update_results", results)
+        epos = results[0]
         # Report results
         gcode = self.printer.lookup_object('gcode')
         gcode.respond_info("probe: at %.3f,%.3f bed will contact at z=%.6f"
@@ -428,10 +431,6 @@ class ProbeOffsetsHelper:
         self.z_offset = config.getfloat('z_offset')
     def get_offsets(self, gcmd=None):
         return self.x_offset, self.y_offset, self.z_offset
-    def create_probe_result(self, test_pos):
-        return manual_probe.ProbeResult(
-            test_pos[0]+self.x_offset, test_pos[1]+self.y_offset,
-            test_pos[2]-self.z_offset, test_pos[0], test_pos[1], test_pos[2])
 
 
 ######################################################################
